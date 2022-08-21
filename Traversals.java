@@ -2,6 +2,7 @@
 
 import java.util.*;
 
+// using recursion
 class Node {
     int val;
     Node left;
