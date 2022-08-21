@@ -46,3 +46,7 @@ public class MaxDepth {
         in.close();
     }
 }
+
+// 8 
+// 3 1 4 0 -1 2 6 5
+// 4
