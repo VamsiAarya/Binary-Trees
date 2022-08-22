@@ -51,21 +51,8 @@ public class SpiralTraversal {
         return finalAns;
     }
 
-    private static void lot1(Node root) {
-        
-        List<List<Integer>> ans = spiralMaker(root); 
-        for(int i=0; i<ans.size(); i++){
-            System.out.println("Level: "+ (i+1));
-            for(int j=0; j< ans.get(i).size(); j++){
-                System.out.print(ans.get(i).get(j)+" ");
-            }
-            System.out.println();
-        }
-    }
-
-    public void zigzagLevelOrder(Node root) {
-        //uncomment while submitting in leetcode
-        // if(root ==null) return new ArrayList<>() ;
-        lot1(root);
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        if(root ==null) return new ArrayList<>() ;
+        return spiralMaker(root);
     }
 }
