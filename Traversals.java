@@ -74,6 +74,7 @@ public class Traversals{
            root= insertIntoBST(root, nums[i]);
         } 
 
+        
         System.out.println("Pre order: ");
         preorderTraversal(root);
         System.out.println();
