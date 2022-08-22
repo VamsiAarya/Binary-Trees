@@ -2,7 +2,7 @@ import java.util.*;
 
 public class SpiralTraversal {
 
-    private static List<List<Integer>> spiralMaker(Node root) {
+    private static List<List<Integer>> spiralMaker(TreeNode root) {
         ArrayList<ArrayList<Node>> ans = new ArrayList<>(); 
         Queue<Node > qu = new LinkedList<>();
         qu.add(root);
