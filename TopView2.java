@@ -78,3 +78,8 @@ public class TopView2 {
         in.close();
     }
 }
+
+// 8 3 1 4 2 0 -1 6 5
+
+// Top view
+// -1 0 1 3 4 6 
