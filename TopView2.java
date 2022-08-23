@@ -1,19 +1,10 @@
 import java.util.*;
 
 // if question is asked to print in order from left most node to right most node
+// this is the simplest solution you will ever come across.
 
 public class TopView2 {
-    private static void preorderTraversal(Node root) {
-        if(root == null){
-            return;
-        }
-
-        System.out.print(root.val+" ");
-        preorderTraversal(root.left);
-        preorderTraversal(root.right);
-    }
-
-
+    
     private static Node insertIntoBST(Node root, int val){
 
         if(root == null){
@@ -31,19 +22,32 @@ public class TopView2 {
 
     }
 
+    // why we are using another int[] array in TreeMap is coz,
+    // if a left subtree having child nodes that extend upto max right level then 
+    // first node of that column will be on top, so it has to be in the top view.
 
-    static TreeMap<Integer, Integer> map ;
-    private static void topView(Node root, int col) {
+    static TreeMap<Integer, int[]> map ;
+    private static void topView(Node root, int col,int level) {
         if(root ==null) return;
 
         
         if(!map.containsKey(col)){
-            map.put(col, root.val);
+            int[] frst = {level,root.val};
+            map.put(col, frst);
+        }
+        else{
+            int[] arr = map.get(col);
+            if(arr[0] > level){
+                arr [0] = level;
+                arr[1] = root.val;
+            }
         }
             
-        topView(root.left, col-1);
-        topView(root.right, col+1);
+        topView(root.left, col-1, level+1);
+        topView(root.right, col+1, level+1);
     }
+
+
     public static void main(String[] args) {
         map= new TreeMap<>();
         Scanner in = new Scanner(System.in);
@@ -57,20 +61,16 @@ public class TopView2 {
            root= insertIntoBST(root, nums[i]);
         } 
 
-        
-        // System.out.println("Pre order: ");
-        // preorderTraversal(root);
-
-        System.out.println();
 
         System.out.println("Top view");
 
-        topView(root, 0);
-        // System.out.println(map);
+        
+        topView(root, 0 ,0);
+        System.out.println(map);
 
         String ans ="";
         for(Integer key : map.keySet()){
-            ans += map.get(key)+" ";
+            ans += map.get(key)[1]+" ";
         }
 
         System.out.println(ans);
